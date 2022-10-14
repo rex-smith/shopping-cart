@@ -1,3 +1,5 @@
+import StorePicture from "./Images/store_picture.jpg";
+
 const Home = () => {
   return (
     <div className="home">
@@ -12,7 +14,7 @@ const Home = () => {
         employees, vendors and most importantly to the consumer.
       </p>
       <div className="home-image">
-        <img src="" alt="" />
+        <img src={StorePicture} alt="Our Store Interior" />
       </div>
     </div>
   );

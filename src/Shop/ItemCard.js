@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ItemCard = ({ name, image, id }) => {
   return (
-    <Link to={"/" + id}>
+    <Link to={`./${id}`}>
       <div className="card-item">
         <div className="card-image">
           <img src={image} alt={name} />

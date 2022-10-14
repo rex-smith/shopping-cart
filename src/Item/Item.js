@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import Inventory from "./index";
 
-const Item = ({ params }) => {
+const Item = ({ handleSubmit }) => {
+  let { itemId } = useParams();
+
   const getItemFromId = (id) => {
     for (let i = 0; i < Inventory.length; i++) {
       if (Inventory[i].id === id) {
@@ -15,19 +18,12 @@ const Item = ({ params }) => {
     setQuantity(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.prevent.default();
-    // Go to cart page
-    // Add order to cart
-    // How to get params or props when passed in as a route?
-  };
-
-  let item = getItemFromId(params.id);
+  let item = getItemFromId(itemId);
 
   const [quantity, setQuantity] = useState(0);
   return (
-    <div>
-      <div className="image-container">
+    <div className="item">
+      <div className="item-image">
         <img src={item.image} alt="" />
       </div>
       <div className="item-bottom">
@@ -36,7 +32,7 @@ const Item = ({ params }) => {
           <p>{item.description}</p>
         </div>
         <div className="column">
-          <form action="" onSubmit={handleSubmit}>
+          <form action="" onSubmit={(e) => handleSubmit(e, item)}>
             <label htmlFor="quantity">Quantity</label>
             <input
               id="quantity"
@@ -46,6 +42,7 @@ const Item = ({ params }) => {
               onChange={handleChange}
             />
             <button className="button button-submit" type="submit">
+              <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
             </button>
           </form>

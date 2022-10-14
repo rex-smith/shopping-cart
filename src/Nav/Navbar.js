@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import NavCart from "./NavCart";
 
 const Navbar = (props) => {
@@ -6,19 +6,45 @@ const Navbar = (props) => {
   return (
     <nav>
       <div className="company-branding">
-        <div>Shop Name</div>
+        <div className="brand-name">Silver Saddle Outfitters</div>
       </div>
-      <div className="nav-menu">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+      <div>
+        <ul className="nav-menu">
+          <li className="nav-menu-item">
+            <NavLink
+              to="/"
+              className={({ isActive }) => {
+                return isActive ? "active" : "";
+              }}
+            >
+              Home
+            </NavLink>
           </li>
-          <li>
-            <Link to="/shop">Shop</Link>
+          <li className="nav-menu-item">
+            <NavLink
+              to="/shop"
+              className={({ isActive }) => {
+                return isActive ? "active" : "";
+              }}
+            >
+              Shop
+            </NavLink>
+          </li>
+          <li className="nav-menu-item">
+            <NavLink
+              to="/cart"
+              className={({ isActive }) => {
+                return isActive ? "active" : "";
+              }}
+            >
+              Cart
+            </NavLink>
+          </li>
+          <li className="nav-menu-item">
+            <NavCart cart={cart} />
           </li>
         </ul>
       </div>
-      <NavCart cart={cart} />
     </nav>
   );
 };
