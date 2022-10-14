@@ -6,6 +6,9 @@ const Item = ({ handleSubmit }) => {
   let { itemId } = useParams();
 
   const getItemFromId = (id) => {
+    if (typeof id !== "integer") {
+      id = parseInt(id);
+    }
     for (let i = 0; i < Inventory.length; i++) {
       if (Inventory[i].id === id) {
         return Inventory[i];
@@ -33,16 +36,18 @@ const Item = ({ handleSubmit }) => {
         </div>
         <div className="column">
           <form action="" onSubmit={(e) => handleSubmit(e, item)}>
-            <label htmlFor="quantity">Quantity</label>
-            <input
-              id="quantity"
-              name="quantity"
-              type="number"
-              value={quantity}
-              onChange={handleChange}
-            />
+            <div className="field">
+              <label htmlFor="quantity">Quantity</label>
+              <input
+                id="quantity"
+                name="quantity"
+                type="number"
+                value={quantity}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
             <button className="button button-submit" type="submit">
-              <i class="fa-solid fa-cart-plus"></i>
+              <i className="fa-solid fa-cart-plus"></i>
               Add to Cart
             </button>
           </form>

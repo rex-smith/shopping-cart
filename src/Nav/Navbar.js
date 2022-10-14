@@ -2,46 +2,57 @@ import { NavLink } from "react-router-dom";
 import NavCart from "./NavCart";
 
 const Navbar = (props) => {
-  const { cart } = props;
+  const { cart, removeItem } = props;
   return (
     <nav>
       <div className="company-branding">
-        <div className="brand-name">Silver Saddle Outfitters</div>
+        <div className="brand-name">Silver Saddle</div>
       </div>
       <div>
         <ul className="nav-menu">
-          <li className="nav-menu-item">
-            <NavLink
-              to="/"
-              className={({ isActive }) => {
-                return isActive ? "active" : "";
-              }}
-            >
-              Home
+          <li>
+            <NavLink to="/" end>
+              {({ isActive }) => (
+                <div
+                  className={
+                    isActive ? "active nav-menu-item" : "nav-menu-item"
+                  }
+                >
+                  Home
+                </div>
+              )}
             </NavLink>
           </li>
-          <li className="nav-menu-item">
-            <NavLink
-              to="/shop"
-              className={({ isActive }) => {
-                return isActive ? "active" : "";
-              }}
-            >
-              Shop
+          <li>
+            <NavLink to="/shop">
+              {({ isActive }) => (
+                <div
+                  className={
+                    isActive ? "active nav-menu-item" : "nav-menu-item"
+                  }
+                >
+                  Shop
+                </div>
+              )}
             </NavLink>
           </li>
-          <li className="nav-menu-item">
-            <NavLink
-              to="/cart"
-              className={({ isActive }) => {
-                return isActive ? "active" : "";
-              }}
-            >
-              Cart
+          <li>
+            <NavLink to="/cart">
+              {({ isActive }) => (
+                <div
+                  className={
+                    isActive ? "active nav-menu-item" : "nav-menu-item"
+                  }
+                >
+                  Cart
+                </div>
+              )}
             </NavLink>
           </li>
-          <li className="nav-menu-item">
-            <NavCart cart={cart} />
+          <li>
+            <div className="nav-menu-item">
+              <NavCart cart={cart} removeItem={removeItem} />
+            </div>
           </li>
         </ul>
       </div>

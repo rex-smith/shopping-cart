@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CartDropdown from "./CartDropdown";
 
-const NavCart = ({ cart }) => {
+const NavCart = ({ cart, removeItem }) => {
   // Need to add a boolean for onHover that then renders the dropdown items below
 
   const [cartVisibility, setCartVisibility] = useState(false);
@@ -25,10 +25,16 @@ const NavCart = ({ cart }) => {
         className="cart-drop-button"
         onClick={(e) => toggleCartVisibility(e)}
       >
-        <p>{cartItemQuantity(cart)} Items</p>
+        <div>
+          {cartItemQuantity(cart)} Item{cartItemQuantity(cart) !== 1 ? "s" : ""}
+        </div>
         <i className="fa-solid fa-cart-shopping"></i>
       </div>
-      <CartDropdown visible={cartVisibility} cart={cart} />
+      <CartDropdown
+        visible={cartVisibility}
+        cart={cart}
+        removeItem={removeItem}
+      />
     </div>
   );
 };

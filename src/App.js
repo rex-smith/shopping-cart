@@ -20,7 +20,7 @@ function App() {
     // Add order to cart
     setOrderCounter((prevOrderCounter) => prevOrderCounter + 1);
     let newOrder = {
-      quantity: e.target.elements.quantity,
+      quantity: parseInt(e.target.elements.quantity.value),
       id: orderCounter,
       item: item,
     };
@@ -34,7 +34,7 @@ function App() {
   const removeItem = (e, orderId) => {
     e.preventDefault();
     let tempCart = [...cart];
-    tempCart.filter((order) => order.id !== orderId);
+    tempCart = tempCart.filter((order) => order.id !== orderId);
     setCart(tempCart);
   };
 

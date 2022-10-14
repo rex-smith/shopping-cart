@@ -13,24 +13,27 @@ const Cart = ({ cart, removeItem }) => {
                 <li className="cart-order" key={order.id}>
                   <div>
                     <h4>{order.item.name}</h4>
-                    <p>{order.quantity}</p>
-                    <button onClick={(e) => removeItem(e, order.id)}>
+                    <p>Quantity: {order.quantity}</p>
+                    <button
+                      className="button button-delete"
+                      onClick={(e) => removeItem(e, order.id)}
+                    >
                       Remove Item
                     </button>
                   </div>
-                  <div>
+                  <div className="cart-image-container">
                     <img src={order.item.image} alt={order.item.name} />
                   </div>
                 </li>
               );
             })}
           </ul>
-          <button className="button">Checkout</button>
+          <button className="button button-submit">Checkout</button>
         </div>
       ) : (
         <div>No items in your cart!</div>
       )}
-      <button className="button" onClick={navigate("/shop")}>
+      <button className="button" onClick={() => navigate("/shop")}>
         Continue Shopping
       </button>
     </div>

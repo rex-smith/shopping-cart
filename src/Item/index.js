@@ -15,7 +15,7 @@ const inventory = [
   },
   {
     name: "Bergfruende Rain Jacket",
-    image: InventoryImages.BergfruendeRainJacket,
+    image: InventoryImages.BergfreundeRainJacket,
     description: "This rain jacket is made from 100% recycled polyester.",
     id: 2,
   },
